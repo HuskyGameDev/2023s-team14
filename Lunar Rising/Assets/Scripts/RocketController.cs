@@ -9,11 +9,11 @@ public class RocketController : MonoBehaviour
 
     bool thrust = false;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
