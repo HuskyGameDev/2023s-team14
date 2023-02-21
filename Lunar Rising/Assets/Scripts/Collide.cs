@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collide : MonoBehaviour
 {
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Collide : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             Debug.Log("Collided with obstacle");
+            player.SetActive(false);
         }
     }
 }
