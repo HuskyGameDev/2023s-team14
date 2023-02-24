@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class MenuButtonHandler : MonoBehaviour
 {
     public GameObject optionsMenu;
     public GameObject mainMenu;
@@ -28,5 +28,19 @@ public class MenuManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1;
+        Pause.gameIsPaused = false;
+        SceneManager.LoadScene(0);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        this.gameObject.SetActive(false);
+        Pause.gameIsPaused = false;
     }
 }
