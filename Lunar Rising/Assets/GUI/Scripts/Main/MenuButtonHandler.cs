@@ -32,15 +32,13 @@ public class MenuButtonHandler : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Time.timeScale = 1;
-        Pause.gameIsPaused = false;
+        Pause.unpauseGame();
         SceneManager.LoadScene(0);
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Pause.unpauseGame();
         this.gameObject.SetActive(false);
-        Pause.gameIsPaused = false;
     }
 }

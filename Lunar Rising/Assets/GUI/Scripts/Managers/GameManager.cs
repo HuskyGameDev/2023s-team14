@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] GameObject pauseMenu;
     private bool _isGameOver;
 
     void Awake()
@@ -25,12 +24,7 @@ public class GameManager : MonoBehaviour
         _isGameOver = false;
     }
 
-    private void Update()
-    {
-        HandlePausing();
-    }
-
-    public void HandlePausing()
+    public void HandlePausing(GameObject pauseMenu)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
