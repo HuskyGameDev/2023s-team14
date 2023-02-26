@@ -79,3 +79,5 @@ MonoBehaviour:
   - {fileID: -1748995216, guid: 2236fa96a86c44c4bb511581d9fb45c7, type: 3}
   - {fileID: 2102530474, guid: 2236fa96a86c44c4bb511581d9fb45c7, type: 3}
   interval: 3
+  minHeight: -4
+  maxHeight: 4.75

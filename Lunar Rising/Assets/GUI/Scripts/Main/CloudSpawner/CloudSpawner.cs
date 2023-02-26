@@ -9,6 +9,7 @@ public class CloudSpawner : MonoBehaviour
     GameObject cloudInstance;
     [SerializeField] float interval = 1f;
     float timeSinceSpawnedObject = Mathf.Infinity;
+    [SerializeField] float minHeight = -4f, maxHeight = 4.75f;
 
     private void Update()
     {
@@ -16,7 +17,7 @@ public class CloudSpawner : MonoBehaviour
 
         if (timeSinceSpawnedObject > interval)
         {
-            cloudInstance = Instantiate(cloud, new Vector2(this.transform.position.x, Random.Range(-4.75f, 4.75f)), Quaternion.identity);
+            cloudInstance = Instantiate(cloud, new Vector2(this.transform.position.x, Random.Range(minHeight, maxHeight)), Quaternion.identity);
             cloudInstance.GetComponent<SpriteRenderer>().sprite = cloudSprite[Random.Range(0, 5)];
             timeSinceSpawnedObject = 0f;
         }
