@@ -9,6 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Brendan.unity
     guid: 4075b98c5a30d644cb3642bd65c0b9b3
   - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 1.unity
+    guid: 86d1a727f6e50f344980186338138f1a
+  - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 2.unity
+    guid: a67774112e80ddf418c5ac35f6f9462b
+  - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 3.unity
+    guid: de1dbab1b1fdcf64e87e58f59c6104ac
+  - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 4.unity
+    guid: f0e2141f961a9c24995496a8b1b5ebb7
+  - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 5.unity
+    guid: 074dc6d2a3be5594f96b0912143faee6
+  - enabled: 1
+    path: Assets/Scenes/Earth Levels/Earth 6.unity
+    guid: 026ac9baeb599984bb8e8c56e319dff1
+  - enabled: 1
     path: Assets/Scenes/Moon Levels/Moon 1.unity
     guid: ca94e8e2b4c7bcb428f7c1def4b608fd
   - enabled: 1
