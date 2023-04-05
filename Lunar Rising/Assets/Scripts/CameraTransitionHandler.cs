@@ -29,13 +29,13 @@ public class CameraTransitionHandler : MonoBehaviour
     void Update()
     {
         playerPos = player.transform.position;
-        if (playerPos.y > vertExtent)
+        if (playerPos.y > vertExtent - initVertExtent)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
             vertExtent += yOffset;
         }
 
-        else if(playerPos.y < vertExtent - initVertExtent * 2)
+        else if(playerPos.y < vertExtent -initVertExtent - initVertExtent * 2)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z);
             vertExtent -= yOffset;
