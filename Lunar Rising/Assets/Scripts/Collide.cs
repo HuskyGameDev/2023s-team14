@@ -4,27 +4,34 @@ using UnityEngine;
 
 public class Collide : MonoBehaviour
 {
-    public GameObject player;
+    Rigidbody2D rb;
+    Vector2 velocity;
+    [SerializeField] ParticleSystem explosion;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        velocity = new Vector2(Mathf.Abs(rb.velocity.x), Mathf.Abs(rb.velocity.y));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collided with something");
-        if (collision.gameObject.tag == "Obstacle")
+        Vector2 collisionNormal = (other.transform.position - transform.position).normalized;
+
+        float playerCollisionSpeed = Vector2.Dot(collisionNormal, velocity);
+
+        if (other.gameObject.tag == "Obstacle" && Mathf.Abs(playerCollisionSpeed) > 2f)
         {
-            Debug.Log("Collided with obstacle");
-            player.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("rocket_explode_sound");
+            explosion.Play();
+            // TODO: Reset player after a delay
+            // TODO: Disallow input from the player
         }
     }
 }

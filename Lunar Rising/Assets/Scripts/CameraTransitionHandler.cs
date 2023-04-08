@@ -35,7 +35,7 @@ public class CameraTransitionHandler : MonoBehaviour
             vertExtent += yOffset;
         }
 
-        else if(playerPos.y < vertExtent -initVertExtent - initVertExtent * 2)
+        else if(playerPos.y < vertExtent - initVertExtent - initVertExtent * 2)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z);
             vertExtent -= yOffset;
@@ -52,8 +52,5 @@ public class CameraTransitionHandler : MonoBehaviour
             transform.position = new Vector3(transform.position.x - xOffset, transform.position.y, transform.position.z);
             horzExtent -= xOffset;
         }
-
-        Debug.Log("Vert: " + vertExtent);
-        Debug.Log("Horz: " + horzExtent);
     }
 }
