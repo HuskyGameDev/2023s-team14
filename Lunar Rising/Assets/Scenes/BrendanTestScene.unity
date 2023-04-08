@@ -15829,6 +15829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 648161146}
+  targetScene: 1
+  model: {fileID: 7820999862414015768}
+  thrust: {fileID: 4567072186136203778}
 --- !u!198 &619136509436223472
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Collide : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 velocity;
     [SerializeField] ParticleSystem explosion;
+
+    public int targetScene = 0;
+    public GameObject model;
+    public GameObject thrust;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +34,17 @@ public class Collide : MonoBehaviour
         if (other.gameObject.tag == "Obstacle" && Mathf.Abs(playerCollisionSpeed) > 2f)
         {
             FindObjectOfType<AudioManager>().Play("rocket_explode_sound");
+            model.SetActive(false);
+            thrust.SetActive(false);
             explosion.Play();
-            // TODO: Reset player after a delay
-            // TODO: Disallow input from the player
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            StartCoroutine(wait());
         }
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(targetScene);
     }
 }
