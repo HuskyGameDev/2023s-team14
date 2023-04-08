@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Brendan.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 4075b98c5a30d644cb3642bd65c0b9b3
   - enabled: 1
-    path: Assets/Scenes/Earth Levels/Earth 1.unity
+    path: Assets/Scenes/Earth Levels/Refactored/Earth.unity
     guid: 86d1a727f6e50f344980186338138f1a
   - enabled: 1
     path: Assets/Scenes/Earth Levels/Earth 2.unity

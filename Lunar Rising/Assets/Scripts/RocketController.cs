@@ -34,7 +34,12 @@ public class RocketController : MonoBehaviour
     {
         if (thrust)
         {
+            FindObjectOfType<AudioManager>().Play("rocket_thrust_sound");
             rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Stop("rocket_thrust_sound");
         }
     }
 }
