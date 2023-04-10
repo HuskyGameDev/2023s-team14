@@ -54,6 +54,6 @@ EditorBuildSettings:
     path: Assets/Scenes/BrendanTestScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Brenda/s.unity
+    path: Assets/Scenes/Game.unity
     guid: 40b36afb7a1ddc44f9e8212adaf004a5
   m_configObjects: {}
