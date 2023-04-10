@@ -9,7 +9,7 @@ public class Collide : MonoBehaviour
     Vector2 velocity;
     [SerializeField] ParticleSystem explosion;
 
-    public int targetScene = 0;
+    public int targetScene = 1;
     public GameObject model;
     public GameObject thrust;
 
@@ -31,7 +31,7 @@ public class Collide : MonoBehaviour
 
         float playerCollisionSpeed = Vector2.Dot(collisionNormal, velocity);
 
-        if (other.gameObject.tag == "Obstacle" && Mathf.Abs(playerCollisionSpeed) > 2f)
+        if ((other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Ground") && Mathf.Abs(playerCollisionSpeed) > 5f)
         {
             FindObjectOfType<AudioManager>().Play("rocket_explode_sound");
             model.SetActive(false);

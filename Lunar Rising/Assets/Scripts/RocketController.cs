@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RocketController : MonoBehaviour
 {
@@ -20,10 +21,19 @@ public class RocketController : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] ParticleSystem thrustParticles;
+    public TextMeshProUGUI thrustText;
+
+    public FuelTank fuelTank;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        thrustText.text = "Thrust: " + 0;
+        fuelTank.SetMaxFuel((int)boostAmount);
     }
 
     private void Update()
@@ -45,14 +55,23 @@ public class RocketController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (thrust && boostAmount > 0f)
+        if (thrust && boostAmount > 2f)
         {
             thrustParticles.Play();
             FindObjectOfType<AudioManager>().Play("rocket_thrust_sound");
             rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
             boostAmount = boostAmount - rechargeInterval;
+            fuelTank.SetFuel((int)boostAmount);
         }
-        else if (!thrust)
+        else if(thrust && (boostAmount <= 2f && boostAmount > 0f))
+        {
+            thrustParticles.Stop();
+            FindObjectOfType<AudioManager>().Stop("rocket_thrust_sound");
+            rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
+            boostAmount = boostAmount - rechargeInterval;
+            fuelTank.SetFuel((int)boostAmount);
+        }
+        else if (!thrust || boostAmount <= 0f)
         {
             FindObjectOfType<AudioManager>().Stop("rocket_thrust_sound");
             thrustParticles.Stop();
@@ -63,6 +82,7 @@ public class RocketController : MonoBehaviour
                 if (time > delayAmount)
                 {
                     boostAmount = boostAmount + rechargeInterval;
+                    fuelTank.SetFuel((int)boostAmount);
                     time = 0f;
                 }
             }

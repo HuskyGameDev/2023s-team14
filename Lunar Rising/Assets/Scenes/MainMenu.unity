@@ -4101,6 +4101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: button_select_sound
+    loop: 0
     clip: {fileID: 8300000, guid: 256b842fc1710dc41b8e35b448c79101, type: 3}
     mixer: {fileID: 24300002, guid: 5d23824b843956241ae5004fab7adc1c, type: 2}
     volume: 1
