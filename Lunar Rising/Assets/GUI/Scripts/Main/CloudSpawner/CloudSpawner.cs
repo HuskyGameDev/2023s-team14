@@ -16,19 +16,35 @@ public class CloudSpawner : MonoBehaviour
 
     private void Start()
     {
-        cameraYPos = Camera.main.transform.position.y;
-        playerYPos = player.transform.position.y;
+        if (player != null)
+        {
+            cameraYPos = Camera.main.transform.position.y;
+            playerYPos = player.transform.position.y;
+        }
     }
 
     private void Update()
     {
-        cameraYPos = Camera.main.transform.position.y;
-        playerYPos = player.transform.position.y;
-        timeSinceSpawnedObject += Time.deltaTime;
-
-        if (timeSinceSpawnedObject > interval)
+        if (player != null)
         {
-            if (playerYPos >= gameObject.transform.position.y - 5f && playerYPos < gameObject.transform.position.y + 5f)
+            cameraYPos = Camera.main.transform.position.y;
+            playerYPos = player.transform.position.y;
+            timeSinceSpawnedObject += Time.deltaTime;
+
+            if (timeSinceSpawnedObject > interval)
+            {
+                if (playerYPos >= gameObject.transform.position.y - 5f && playerYPos < gameObject.transform.position.y + 5f)
+                {
+                    cloudInstance = Instantiate(cloud, new Vector2(this.transform.position.x, Random.Range(cameraYPos - 5f, cameraYPos + 5f)), Quaternion.identity);
+                    cloudInstance.GetComponent<SpriteRenderer>().sprite = cloudSprite[Random.Range(0, 5)];
+                    cloudInstance.transform.localScale = new Vector3(cloudSize, cloudSize, cloudSize);
+                    timeSinceSpawnedObject = 0f;
+                }
+            }
+        }
+        else
+        {
+            if (timeSinceSpawnedObject > interval)
             {
                 cloudInstance = Instantiate(cloud, new Vector2(this.transform.position.x, Random.Range(cameraYPos - 5f, cameraYPos + 5f)), Quaternion.identity);
                 cloudInstance.GetComponent<SpriteRenderer>().sprite = cloudSprite[Random.Range(0, 5)];

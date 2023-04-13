@@ -7,11 +7,13 @@ public class MenuButtonHandler : MonoBehaviour
 {
     public GameObject optionsMenu;
     public GameObject mainMenu;
+    public Animator transition;
+    public float transitionTime = 1f;
 
     public void StartGame()
     {
         FindObjectOfType<AudioManager>().Play("button_select_sound");
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadLevel(1));
     }
 
     public void OpenOptions()
@@ -38,7 +40,7 @@ public class MenuButtonHandler : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("button_select_sound");
         Pause.unpauseGame();
-        SceneManager.LoadScene(0);
+        StartCoroutine(LoadLevel(0));
     }
 
     public void ResumeGame()
@@ -46,5 +48,14 @@ public class MenuButtonHandler : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("button_select_sound");
         Pause.unpauseGame();
         mainMenu.SetActive(false);
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
     }
 }

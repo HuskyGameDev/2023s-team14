@@ -24,6 +24,7 @@ public class RocketController : MonoBehaviour
     [SerializeField] ParticleSystem thrustParticles;
 
     public FuelTank fuelTank;
+    public TextMeshProUGUI gravityScaleText;
 
     private void Awake()
     {
@@ -69,6 +70,8 @@ public class RocketController : MonoBehaviour
         {
             rb.gravityScale = 1f;
         }
+
+        gravityScaleText.text = "Gravity: " + Mathf.Round((float)(rb.gravityScale * 9.80665) * 100f) / 100f;
     }
 
     private void FixedUpdate()
