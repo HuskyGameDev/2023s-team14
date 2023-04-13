@@ -14,6 +14,7 @@ public class RocketController : MonoBehaviour
 
     bool thrust = false;
     [SerializeField] float boostAmount = 100f;
+    float maxBoost;
     [SerializeField] float rechargeInterval = 1f;
     float time = 0f;
     float delayAmount = 2f;
@@ -21,7 +22,6 @@ public class RocketController : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] ParticleSystem thrustParticles;
-    public TextMeshProUGUI thrustText;
 
     public FuelTank fuelTank;
 
@@ -32,7 +32,7 @@ public class RocketController : MonoBehaviour
 
     private void Start()
     {
-        thrustText.text = "Thrust: " + 0;
+        maxBoost = boostAmount;
         fuelTank.SetMaxFuel((int)boostAmount);
     }
 
@@ -51,6 +51,24 @@ public class RocketController : MonoBehaviour
         }
 
         rb.freezeRotation = false;
+
+        if (transform.position.y > 215f)
+        {
+            rb.gravityScale = 0.167f;
+        } 
+        else if (transform.position.y > 175f)
+        {
+            if ((215f - transform.position.y) >= 8f)
+            {
+                rb.gravityScale = (215f - transform.position.y) * 0.020825f;
+            } else
+            {
+                rb.gravityScale = 0.167f;
+            }
+        } else
+        {
+            rb.gravityScale = 1f;
+        }
     }
 
     private void FixedUpdate()
@@ -76,7 +94,7 @@ public class RocketController : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("rocket_thrust_sound");
             thrustParticles.Stop();
 
-            if (boostAmount < 100f && isGrounded)
+            if (boostAmount < maxBoost && isGrounded)
             {
                 time += Time.time;
                 if (time > delayAmount)

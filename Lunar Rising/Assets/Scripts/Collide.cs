@@ -31,7 +31,7 @@ public class Collide : MonoBehaviour
 
         float playerCollisionSpeed = Vector2.Dot(collisionNormal, velocity);
 
-        if ((other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Ground") && Mathf.Abs(playerCollisionSpeed) > 5f)
+        if ((other.gameObject.tag == "Ground" && Mathf.Abs(playerCollisionSpeed) > 8f) || other.gameObject.tag == "Obstacle")
         {
             FindObjectOfType<AudioManager>().Play("rocket_explode_sound");
             model.SetActive(false);

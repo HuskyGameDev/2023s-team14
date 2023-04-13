@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         _isGameOver = false;
     }
 
-    public void HandlePausing(GameObject pauseMenu)
+    public void HandlePausing(GameObject pauseMenu, GameObject optionsMenu)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
             {
                 Pause.unpauseGame();
                 Menu.CloseMenu(pauseMenu);
+                Menu.CloseMenu(optionsMenu);
             }
         }
     }

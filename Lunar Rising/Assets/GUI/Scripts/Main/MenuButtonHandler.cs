@@ -45,6 +45,6 @@ public class MenuButtonHandler : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("button_select_sound");
         Pause.unpauseGame();
-        this.gameObject.SetActive(false);
+        mainMenu.SetActive(false);
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class PauseHandler : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject optionsMenu;
 
     private void Update()
     {
-        GameManager.Instance.HandlePausing(pauseMenu);
+        GameManager.Instance.HandlePausing(pauseMenu, optionsMenu);
     }
 }

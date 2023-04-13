@@ -31,6 +31,7 @@ public class CameraTransitionHandler : MonoBehaviour
         playerPos = player.transform.position;
         if (playerPos.y > vertExtent - initVertExtent)
         {
+            Debug.Log("HELLO");
             transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
             vertExtent += yOffset;
         }
@@ -41,16 +42,16 @@ public class CameraTransitionHandler : MonoBehaviour
             vertExtent -= yOffset;
         }
 
-        else if(playerPos.x > horzExtent)
-        {
-            transform.position = new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z);
-            horzExtent += xOffset;
-        }
+        //else if(playerPos.x > horzExtent)
+        //{
+        //    transform.position = new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z);
+        //    horzExtent += xOffset;
+        //}
 
-        else if (playerPos.x < horzExtent - initHorzExtent * 2)
-        {
-            transform.position = new Vector3(transform.position.x - xOffset, transform.position.y, transform.position.z);
-            horzExtent -= xOffset;
-        }
+        //else if (playerPos.x < horzExtent - initHorzExtent * 2)
+        //{
+        //    transform.position = new Vector3(transform.position.x - xOffset, transform.position.y, transform.position.z);
+        //    horzExtent -= xOffset;
+        //}
     }
 }

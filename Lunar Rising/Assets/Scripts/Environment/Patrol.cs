@@ -7,10 +7,14 @@ public class Patrol : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
 
     Rigidbody2D myRigidbody;
+    Transform transform;
+
+    bool inSheepClip = false;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        transform = GetComponent<Transform>();
     }
 
     void Update()
@@ -32,5 +36,18 @@ public class Patrol : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (collision.collider.tag == "Player")
+        //{
+        //    if ((transform.position.y > collision.collider.gameObject.transform.position.y)) // Sheep clip.
+        //    {
+        //        collision.collider.gameObject.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(0f, 2200f));
+        //        // collision.collider.enabled = false;
+        //        inSheepClip = true;
+        //    }
+        //}
     }
 }
