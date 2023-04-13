@@ -8,6 +8,8 @@ public class Collide : MonoBehaviour
     Rigidbody2D rb;
     Vector2 velocity;
     [SerializeField] ParticleSystem explosion;
+    Vector2 startingPos;
+    Quaternion startingRotation;
 
     public int targetScene = 1;
     public GameObject model;
@@ -16,6 +18,8 @@ public class Collide : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startingPos = transform.position;
+        startingRotation = transform.rotation;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -45,6 +49,11 @@ public class Collide : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(targetScene);
+        //SceneManager.LoadScene(targetScene);
+        transform.position = startingPos;
+        transform.rotation = startingRotation;
+        model.SetActive(true);
+        thrust.SetActive(true);
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 }
