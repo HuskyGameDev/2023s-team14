@@ -35,7 +35,7 @@ public class Collide : MonoBehaviour
 
         float playerCollisionSpeed = Vector2.Dot(collisionNormal, velocity);
 
-        if ((other.gameObject.tag == "Ground" && Mathf.Abs(playerCollisionSpeed) > 6f) || other.gameObject.tag == "Obstacle")
+        if ((other.gameObject.tag == "Ground" && Mathf.Abs(playerCollisionSpeed) > 6.5f) || other.gameObject.tag == "Obstacle")
         {
             FindObjectOfType<AudioManager>().Play("rocket_explode_sound");
             model.SetActive(false);
@@ -49,11 +49,11 @@ public class Collide : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1);
-        //SceneManager.LoadScene(targetScene);
-        transform.position = startingPos;
-        transform.rotation = startingRotation;
-        model.SetActive(true);
-        thrust.SetActive(true);
-        rb.constraints = RigidbodyConstraints2D.None;
+        SceneManager.LoadScene(targetScene);
+        //transform.position = startingPos;
+        //transform.rotation = startingRotation;
+        //model.SetActive(true);
+        //thrust.SetActive(true);
+        //rb.constraints = RigidbodyConstraints2D.None;
     }
 }
